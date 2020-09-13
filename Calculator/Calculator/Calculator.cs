@@ -24,26 +24,30 @@ namespace Calculator
             {
                 case "+":
                     {
-                        res = Double.Parse(tmpArray[0]) + Double.Parse(tmpArray[2]);
+                        res = Sum(tmpArray[0],tmpArray[2]);
                         break;
                     }
                 case "-":
                     {
-                        res = Double.Parse(tmpArray[0]) - Double.Parse(tmpArray[2]);
+                        res = Sub(tmpArray[0], tmpArray[2]);
                         break;
                     }
                 case "*":
                     {
-                        res = Double.Parse(tmpArray[0]) * Double.Parse(tmpArray[2]);
+                        res = Mult(tmpArray[0], tmpArray[2]);
                         break;
                     }
                 case "/":
                     {
-                        if (tmpArray[1] != "0")
+                        if (tmpArray[2] != "0")
                         {
-                            res = Double.Parse(tmpArray[0]) / Double.Parse(tmpArray[2]);
+                            res = Div(tmpArray[0], tmpArray[2]);
                         }
-                        else Print(tmpArray[0], tmpArray[1], tmpArray[2], "На ноль делить нельзя");
+                        else
+                        {
+                            Print(tmpArray[0], tmpArray[1], tmpArray[2], "На ноль делить нельзя");
+                            return;
+                        }
                         break;
                     }
                 default:
@@ -65,6 +69,22 @@ namespace Calculator
             {
                 Console.WriteLine(o);
             }
+        }
+        public double Sum(string str1, string str2)
+        {
+            return Double.Parse(str1) + Double.Parse(str2);
+        }
+        public double Sub(string str1, string str2)
+        {
+            return Double.Parse(str1) - Double.Parse(str2);
+        }
+        public double Mult(string str1, string str2)
+        {
+            return Double.Parse(str1) * Double.Parse(str2);
+        }
+        public double Div(string str1, string str2)
+        {
+            return Double.Parse(str1) / Double.Parse(str2);
         }
     }
 }
