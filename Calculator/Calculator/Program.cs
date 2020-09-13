@@ -6,7 +6,8 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Calculator calc = new Calculator();
+            calc.CalculatorActivate();
         }
     }
 }
