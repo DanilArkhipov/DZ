@@ -23,9 +23,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f53b206-00d1-497d-8104-c60812f12736" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Calculator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Calculator/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="4f53b206-00d1-497d-8104-c60812f12736" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -123,7 +121,7 @@
       <workItem from="1600584881945" duration="14949000" />
       <workItem from="1600613613880" duration="617000" />
       <workItem from="1600614336386" duration="1481000" />
-      <workItem from="1600623762222" duration="1377000" />
+      <workItem from="1600623762222" duration="4479000" />
     </task>
     <servers />
   </component>
@@ -161,10 +159,10 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="152" key="FileChooserDialogImpl" timestamp="1600624706619">
+    <state x="549" y="152" key="FileChooserDialogImpl" timestamp="1600628629733">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="152" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1600624706619" />
+    <state x="549" y="152" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1600628629733" />
     <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1600621910466">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
