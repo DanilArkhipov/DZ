@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build: DZ/Calculator/Calculator.sln
 
     runs-on: ubuntu-latest
 
