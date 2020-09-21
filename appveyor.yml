@@ -8,4 +8,4 @@ build:
   verbosity: minimal
 
 test_script:
-- codecov -f путь_к_файлу_репорт_относительно_корня_проекта -t токен
+- codecov -f "CalculatorCodeCoverage.xml" -t 9c0c6dbd-c9e6-4259-9d9b-058cc1ba3336
