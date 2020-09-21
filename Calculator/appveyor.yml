@@ -7,7 +7,7 @@ before_build:
 - choco install dotnetcore-sdk
 
 build:
-  project: CodecovProject.sln
+  project: Calculator.sln
   verbosity: minimal
 
 test_script:
