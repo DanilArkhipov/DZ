@@ -24,12 +24,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f53b206-00d1-497d-8104-c60812f12736" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Calculator.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Calculator.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Calculator/Calculator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Calculator/Calculator.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Calculator/Calculator.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Calculator/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CalculatorTests/CalculatorTests/CalculatorTest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CalculatorTests/CalculatorTests/CalculatorTests.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/.idea/.idea.Calculator/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/.idea/.idea.Calculator/.idea/contentModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/.idea/.idea.Calculator/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/.idea/.idea.Calculator/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/.idea/.idea.Calculator/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/.idea/.idea.Calculator/.idea/projectSettingsUpdater.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/.idea/.idea.Calculator/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/.idea/.idea.Calculator/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/.idea/.idea.Calculator/riderModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/CalcRunner/CalcRunner.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/CalcRunner/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/Calculator.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/Calculator/CalcLogic.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/Calculator/Calculator.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/Calculator/IO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/CalculatorTest/CalcLogicTest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/CalculatorTest/CalculatorTest.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/CalculatorTest/IOTest.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +49,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Calculator/CalcLogic.cs" root0="FORCE_HIGHLIGHTING" />
@@ -127,6 +139,7 @@
       <workItem from="1600584881945" duration="14949000" />
       <workItem from="1600613613880" duration="617000" />
       <workItem from="1600614336386" duration="1481000" />
+      <workItem from="1600686843681" duration="17000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,6 @@
+language: bash
+
+before_script:
+    - bash <(curl -s https://codecov.io/bash)
+    - chmod +x codecov
+    - ./codecov -f "CalculatorCodeCoverage.xml" -t 9c0c6dbd-c9e6-4259-9d9b-058cc1ba3336
