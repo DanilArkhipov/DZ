@@ -5,9 +5,12 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
+    
+defaults:
+    run:
+      working-directory: ./Calculator
 jobs:
-  build:
+  build :
 
     runs-on: ubuntu-latest
 
