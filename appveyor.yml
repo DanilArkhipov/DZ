@@ -1,4 +1,4 @@
-image: Visual Studio 2015
+image: Visual Studio 2019
 
 before_build:
 - dotnet tool install -g Codecov.Tool --add-source "https://ci.appveyor.com/nuget/codecov-exe" --version "1.10.0-unstable0001"
