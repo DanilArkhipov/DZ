@@ -1,15 +1,11 @@
-image: Visual Studio 2015
+image: Visual Studio 2019
 
 before_build:
-- nuget restore
-- choco install opencover.portable
-- choco install codecov
-- choco install dotnetcore-sdk
+- dotnet tool install -g Codecov.Tool --add-source "https://ci.appveyor.com/nuget/codecov-exe" --version "1.10.0-unstable0001"
 
 build:
   project: Calculator.sln
   verbosity: minimal
 
 test_script:
-- OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:test -filter:"+[Calculator*]* -[CalculatorTest*]*" -output:".\MyProject_coverage.xml" -oldstyle
-- codecov -f "MyProject_coverage.xml
+- codecov -f путь_к_файлу_репорт_относительно_корня_проекта -t токен
