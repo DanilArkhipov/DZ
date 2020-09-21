@@ -1,18 +1,4 @@
-on:
-  push:
-    branches: '**'
-  pull_request:
-    branches: '**'
+language: bash
 
-before_build:
-- nuget restore
-- choco install opencover.portable
-- choco install codecov
-
-build:
-  project: CodecovProject.sln
-  verbosity: minimal
-
-test_script:
-- OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:".\MyUnitTests\bin\Debug\MyUnitTests.dll -noshadow" -filter:"+[UnitTestTargetProject*]* -[MyUnitTests*]*" -output:".\MyProject_coverage.xml"
-- codecov -f "CalculatorCodeCoverage.xml"
+before_script:
+    - bash <(curl -s https://codecov.io/bash)
