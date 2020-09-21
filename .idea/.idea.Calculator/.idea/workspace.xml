@@ -123,9 +123,13 @@
       <workItem from="1600537006672" duration="125000" />
       <workItem from="1600584881945" duration="14949000" />
       <workItem from="1600613613880" duration="617000" />
+<<<<<<< HEAD:.idea/.idea.Calculator/.idea/workspace.xml
       <workItem from="1600614336386" duration="1481000" />
       <workItem from="1600686843681" duration="17000" />
       <workItem from="1600688961897" duration="802000" />
+=======
+      <workItem from="1600614336386" duration="2515000" />
+>>>>>>> CalcWorkBranch:Calculator/.idea/.idea.Calculator/.idea/workspace.xml
     </task>
     <servers />
   </component>
