@@ -1,14 +1,12 @@
 image: Visual Studio 2015
 
 before_build:
-- choco install dotnetcore-sdk
-- choco install opencover.portable
-- choco install codecov
+- nuget restore
+- dotnet tool install -g Codecov.Tool --add-source "https://ci.appveyor.com/nuget/codecov-exe" --version "1.10.0-unstable0001"
 
 build:
   project: Calculator.sln
   verbosity: minimal
 
 test_script:
-- OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:test -filter:"+[Calculator*]* -[CalculatorTest*]*" -output:".\MyProject_coverage.xml" -oldstyle
-- codecov -f "MyProject_coverage.xml
+- codecov -f a'CalculatorCodeCoverage.xml" -t 9c0c6dbd-c9e6-4259-9d9b-058cc1ba3336
