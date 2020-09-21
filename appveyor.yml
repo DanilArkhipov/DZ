@@ -1,0 +1,11 @@
+image: Visual Studio 2015
+
+before_build:
+- dotnet tool install -g Codecov.Tool --add-source "https://ci.appveyor.com/nuget/codecov-exe" --version "1.10.0-unstable0001"
+
+build:
+  project: Calculator.sln
+  verbosity: minimal
+
+test_script:
+- codecov -f \Calculator\CalculatorCodeCoverage.xml -t 9c0c6dbd-c9e6-4259-9d9b-058cc1ba3336
