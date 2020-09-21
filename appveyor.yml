@@ -3,9 +3,10 @@ image: Visual Studio 2019
 before_build:
 - nuget restore
 - dotnet tool install -g Codecov.Tool --add-source "https://ci.appveyor.com/nuget/codecov-exe" --version "1.10.0-unstable0001"
-- codecov -f "CalculatorCodeCoverage.xml" -t 9c0c6dbd-c9e6-4259-9d9b-058cc1ba3336
 
 build:
   project: Calculator.sln
   verbosity: minimal
+script:
+- codecov -f "CalculatorCodeCoverage.xml"
 
