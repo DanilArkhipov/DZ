@@ -1,10 +1,9 @@
 image: Visual Studio 2015
 
 before_build:
-- nuget restore
+- choco install dotnetcore-sdk
 - choco install opencover.portable
 - choco install codecov
-- choco install dotnetcore-sdk
 
 build:
   project: Calculator.sln
