@@ -4,29 +4,33 @@ namespace Calculator
 {
     public class CalcLogic
     {
+        public enum operators
+        {
+            plus,
+            minus,
+            div,
+            mult,
+            
+        }
         public void Activate(string input)
         {
             IO.PrintStartString();
             var inputParsed = IO.ParseInput(input);
-            var res = Calculate(inputParsed);
+            var res = Calculate((double)inputParsed[0],(operators)inputParsed[1],(double)inputParsed[2]);
             IO.PrintResult(inputParsed,res);
         }
-        public double Calculate(object[] input)
+        public double Calculate(double d1, operators op,double d2)
         {
-            var d1 = (double)input[0] ;
-            var d2 = (double) input[2];
-            switch (input[1])
+            switch (op)
             {
-                case "+":
+                case operators.plus:
                     return Sum(d1, d2);
-                case "-":
+                case operators.minus:
                     return Sub(d1, d2);
-                case "*":
+                case operators.mult:
                     return Mult(d1, d2);
-                case "/":
-                    return Div(d1, d2);
                 default:
-                    throw new Exception(IO.ReturnUnexpectedErrorString());
+                    return Div(d1, d2);
             }
         }
 
