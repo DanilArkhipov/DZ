@@ -21,20 +21,14 @@ namespace Calculator
         }
         public double Calculate(double d1, operators op,double d2)
         {
-            switch (op)
+            double res = op switch
             {
-                case operators.plus:
-                    return Sum(d1, d2);
-                case operators.minus:
-                    return Sub(d1, d2);
-                case operators.mult:
-                    return Mult(d1, d2);
-                case operators.div:
-                    return Div(d1, d2);
-                default:
-                    throw new Exception(IO.ReturnUnexpectedErrorString());
-            }
-
+                operators.plus => res = Sum(d1, d2),
+                operators.minus => res = Sub(d1, d2),
+                operators.mult => res = Mult(d1, d2),
+                operators.div => res = Div(d1, d2),
+            };
+            return res;
         }
 
         public Double Sum(double d1,double d2)
