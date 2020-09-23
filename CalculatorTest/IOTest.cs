@@ -58,6 +58,13 @@ namespace CalculatorTest
             Assert.AreEqual(CalcLogic.operators.div,(CalcLogic.operators)ob[1]);
             Assert.AreEqual(5.0,(double)ob[2]);
         }
-        
+
+        [TestMethod]
+        public void ReturnUnexpectedErrorString_Activate_CorrectWork()
+        {
+            var expectedStr = "Возникла непредвиденная ошибка";
+            var actualStr = IO.ReturnUnexpectedErrorString();
+            Assert.AreEqual(expectedStr,actualStr);
+        }        
     }
 }

@@ -6,7 +6,7 @@ namespace Calculator
     {
         private const string StartString = "Введите простое выражение вида число оператор число\nНа следующей строке калькулятор выведет ответ";
         private const string InvalidInputErrorString = "Входные данные иимели неверный формат";
-
+        private const string UnexcpectedErrorString = "Возникла непредвиденная ошибка";
         public static void PrintStartString()
         {
             Console.WriteLine(StartString);
@@ -47,6 +47,10 @@ namespace Calculator
         public static string ReturnInvalidInputErrorString()
         {
             return InvalidInputErrorString;
+        }
+        public static string ReturnUnexpectedErrorString()
+        {
+            return UnexcpectedErrorString;
         }
         public static void PrintResult(object[] input, double res)
         {

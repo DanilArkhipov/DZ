@@ -29,9 +29,12 @@ namespace Calculator
                     return Sub(d1, d2);
                 case operators.mult:
                     return Mult(d1, d2);
-                default:
+                case operators.div:
                     return Div(d1, d2);
+                default:
+                    throw new Exception(IO.ReturnUnexpectedErrorString());
             }
+
         }
 
         public Double Sum(double d1,double d2)
