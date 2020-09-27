@@ -21,46 +21,42 @@ namespace CalculatorTest
         [TestMethod]
         public void Calculate_Double4PlusDouble3_Double7Returned()
         {
-            var ob = new object[] {4.0, "+", 3.0};
+            var d1 = 4.0;
+            var op = CalcLogic.operators.plus;
+            var d2 = 3.0;
             var calc = new CalcLogic();
-            var res = calc.Calculate(ob);
+            var res = calc.Calculate(d1,op,d2);
             Assert.AreEqual(7.0,res);
         }
         [TestMethod]
         public void Calculate_Double4MinusDouble3_Double1Returned()
         {
-            var ob = new object[] {4.0, "-", 3.0};
+            var d1 = 4.0;
+            var op = CalcLogic.operators.minus;
+            var d2 = 3.0;
             var calc = new CalcLogic();
-            var res = calc.Calculate(ob);
+            var res = calc.Calculate(d1,op,d2);
             Assert.AreEqual(1.0,res);
         }
         [TestMethod]
         public void Calculate_Double4MDivisionDouble2_Double2Returned()
         {
-            var ob = new object[] {4.0, "/", 2.0};
+            var d1 = 4.0;
+            var op = CalcLogic.operators.div;
+            var d2 = 2.0;
             var calc = new CalcLogic();
-            var res = calc.Calculate(ob);
+            var res = calc.Calculate(d1,op,d2);
             Assert.AreEqual(2.0,res);
         }
         [TestMethod]
         public void Calculate_Double4MultDouble3_Double12Returned()
         {
-            var ob = new object[] {4.0, "*", 3.0};
+            var d1 = 4.0;
+            var op = CalcLogic.operators.mult;
+            var d2 = 3.0;
             var calc = new CalcLogic();
-            var res = calc.Calculate(ob);
+            var res = calc.Calculate(d1,op,d2);
             Assert.AreEqual(12.0,res);
-        }
-        [TestMethod]
-        public void Calculate_Double4unexpectedSymbolDouble3_Double1Returned()
-        {
-            void TmpMethod()
-            {
-                var ob = new object[] {4.0, "^", 3.0};
-                var calc = new CalcLogic();
-                var res = calc.Calculate(ob);
-            }
-
-            Assert.ThrowsException<Exception> (TmpMethod);
         }
 
         [TestMethod]
