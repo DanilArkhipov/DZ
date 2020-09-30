@@ -37,7 +37,6 @@ let calculate a op b =
     | operation.Div -> Some(div a b)
     | operation.Sub -> Some(sub a b)
     | operation.Sum -> Some(sum a b)
-    | _ -> None
 type MaybeBuilder() =
 
     member this.Bind(x, f) = 
@@ -46,18 +45,20 @@ type MaybeBuilder() =
         | Some a -> f a
 
     member this.Return(x) = 
-        Some x
+        x
    
 let maybe = new MaybeBuilder()
+let activate = 
+    maybe{
+        let! a = getNum(Console.ReadLine())
+        let! b = getOperation(Console.ReadLine())
+        let! c = getNum(Console.ReadLine())
+        let! res = calculate a b c
+        return res
+    }
 [<EntryPoint>]
 let main argv =
-    maybe{
-        let! a = getNum (Console.ReadLine())
-        let! b = getOperation (Console.ReadLine())
-        let! c = getNum (Console.ReadLine())
-        let! res = calculate a b c
-        showValue res
-        return res
-    } |> ignore
+    let res = activate
+    showValue res
     0 // return an integer exit code
 
