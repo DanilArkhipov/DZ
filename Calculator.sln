@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalcRunner", "CalcRunner\Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorTest", "CalculatorTest\CalculatorTest.csproj", "{F9E33DD7-5CDC-4B24-BC96-43AAB9BC497F}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpCalculator", "FSharpCalculator\FSharpCalculator.fsproj", "{2E4D2781-2229-45ED-9088-216C67672456}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F9E33DD7-5CDC-4B24-BC96-43AAB9BC497F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9E33DD7-5CDC-4B24-BC96-43AAB9BC497F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9E33DD7-5CDC-4B24-BC96-43AAB9BC497F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E4D2781-2229-45ED-9088-216C67672456}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E4D2781-2229-45ED-9088-216C67672456}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E4D2781-2229-45ED-9088-216C67672456}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E4D2781-2229-45ED-9088-216C67672456}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
