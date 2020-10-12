@@ -48,17 +48,20 @@ type MaybeBuilder() =
         x
    
 let maybe = new MaybeBuilder()
-let activate = 
+let activate _a _b _c= 
     maybe{
-        let! a = getNum(Console.ReadLine())
-        let! b = getOperation(Console.ReadLine())
-        let! c = getNum(Console.ReadLine())
+        let! a = getNum(_a)
+        let! b = getOperation(_b)
+        let! c = getNum(_c)
         let! res = calculate a b c
         return res
     }
 [<EntryPoint>]
 let main argv =
-    let res = activate
+    let a = Console.ReadLine()
+    let b = Console.ReadLine()
+    let c = Console.ReadLine()
+    let res = activate a b c
     showValue res
     0 // return an integer exit code
 
