@@ -21,7 +21,7 @@ namespace ASPCalculator
             {
                 var str = await sr.ReadToEndAsync();
                 var data = JsonSerializer.Deserialize<InputData>(str);
-                var answerString = showValue(activate(data.FirstNum, data.Operation, data.SecondNumber));
+                var answerString = showValue(activate(data.FirstNumber, data.Operation, data.SecondNumber));
                 var bytes = System.Text.Encoding.UTF8.GetBytes(answerString);
                 await context.Response.Body.WriteAsync(bytes,0,bytes.Length);
             }

@@ -4,7 +4,7 @@ namespace CalculatorSeriallization
 {
     public class InputData
     {
-        public string FirstNum { get; set; }
+        public string FirstNumber { get; set; }
         public string Operation { get; set; }
         public string SecondNumber { get; set; }
 
@@ -15,7 +15,7 @@ namespace CalculatorSeriallization
 
         public InputData(string fN, string op, string sN)
         {
-            FirstNum = fN;
+            FirstNumber = fN;
             Operation = op;
             SecondNumber = sN;
         }
