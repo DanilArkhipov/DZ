@@ -1,16 +1,16 @@
 using System;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace CSharpProxy
 {
     public class Calculator
     {
-        public double Calculate(string input)
+        async public Task<double> Calculate(string input)
         {
-            var expression = Converter.Convert(input);
-            var lambdaExpression = Expression.Lambda<Func<double>>(expression);
-            Func<double> lambdaDelegate = lambdaExpression.Compile();
-            return lambdaDelegate();
+            var expression = (BinaryExpression)Converter.Convert(input);
+            var result = await CalculatorExpressionVisitor.VisitAsync(expression);
+            return result;
         }
     }
 }
