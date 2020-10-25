@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text;
 
 namespace CSharpProxy
 {
@@ -10,9 +11,10 @@ namespace CSharpProxy
     {
         private readonly static char[] operatorsArray = new Char[] {'(', ')', '+', '-', '*', '/'};
         private readonly static char[] delimitersArray = new Char[] {' ', '='};
-        internal static Expression Convert()
+        internal static Expression Convert(string input)
         {
-            throw new NotImplementedException();
+            var tmp = ToPostfix(input);
+            return ToExpression(tmp);
         }
 
         private static bool IsOperator(char c)
@@ -53,7 +55,7 @@ namespace CSharpProxy
                         i++;
                         if (i == input.Length) break;
                     }
-
+                    postfixResult.Enqueue(' ');
                     i--;
                 }
                 if (IsOperator(input[i])) 
@@ -93,9 +95,41 @@ namespace CSharpProxy
             return postfixResult;
         }
 
-        private static Expression ToExpression(Queue<string> input)
+        private static Expression ToExpression(Queue<Char> input)
         {
-            throw new NotImplementedException();
+            var stack = new Stack<Expression>();
+            while (input.Count > 0)
+            {
+                if (Char.IsDigit(input.Peek()))
+                {
+                    var tmp = new StringBuilder();
+                    while (input.Count > 0 && !IsDelimiter(input.Peek()) && !IsOperator(input.Peek()))
+                    {
+                        tmp.Append(input.Dequeue());
+                    }
+                    stack.Push(Expression.Constant(double.Parse(tmp.ToString()),typeof(double)));
+                }
+                if (IsDelimiter(input.Peek()))
+                {
+                    input.Dequeue();
+                }
+                if (IsOperator(input.Peek()))
+                {
+                    var secondExpression = stack.Pop();
+                    var firstExpression = stack.Pop();
+                    var newExpression =
+                        input.Dequeue() switch
+                        {
+                            '+' => Expression.Add(firstExpression, secondExpression),
+                            '-' => Expression.Subtract(firstExpression, secondExpression),
+                            '*' => Expression.Multiply(firstExpression, secondExpression),
+                            '/' => Expression.Divide(firstExpression, secondExpression),
+                        };
+                    stack.Push(newExpression);
+                }
+            }
+
+            return stack.Pop();
         }
     }
 }

@@ -6,7 +6,8 @@ namespace CSharpProxy
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var calc = new Calculator();
+            Console.WriteLine(calc.Calculate(Console.ReadLine()));
         }
     }
 }
