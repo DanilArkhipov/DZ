@@ -26,7 +26,8 @@ namespace CSharpProxy
                 var content = new StringContent(jsonString);
                 var response = await client.PostAsync(url, content);
                 var resSting = await response.Content.ReadAsStringAsync();
-                return Double.Parse(resSting);
+                IFormatProvider formatter = new NumberFormatInfo { NumberDecimalSeparator = "," };
+                return Convert.ToDouble(resSting.Replace('.',','),formatter);
             }
         }
     }
