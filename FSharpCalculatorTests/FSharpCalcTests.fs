@@ -53,12 +53,12 @@ let ``getNumTest_InCorrectInput_None expected`` () =
     Assert.Equal(None,res)
 [<Fact>]
 let ``showValueTest_correctInput_CorrectWork expected`` () =
-    let res = showValue(Some("7"))
+    let res = returnStringValue(Some("7"))
     Assert.Equal("7",res)
     
 [<Fact>]
 let ``showValueTest_NoneInput_CorrectWork expected`` () =
-    let res = showValue (None)
+    let res = returnStringValue (None)
     Assert.Equal("Something was wrong",res)
 [<Fact>]
 let ``calculateTest_3.0 + 4.0_Some(Some(7.0)) expected`` () =
