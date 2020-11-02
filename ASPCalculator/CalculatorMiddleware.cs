@@ -10,9 +10,12 @@ namespace ASPCalculator
     public class CalculatorMiddleware
     {
         private readonly RequestDelegate next;
-        public CalculatorMiddleware(RequestDelegate _next)
+        private readonly ICalculator calculator;
+        
+        public CalculatorMiddleware(RequestDelegate next,ICalculator calculator)
         {
-            next = _next;
+            this.next = next;
+            this.calculator = calculator;
         }
         
         public async Task InvokeAsync(HttpContext context)
@@ -21,7 +24,7 @@ namespace ASPCalculator
             {
                 var str = await sr.ReadToEndAsync();
                 var data = JsonSerializer.Deserialize<InputData>(str);
-                var answerString = showValue(activate(data.FirstNumber, data.Operation, data.SecondNumber));
+                var answerString = calculator.Calculate(data.FirstNumber, data.Operation, data.SecondNumber);
                 var bytes = System.Text.Encoding.UTF8.GetBytes(answerString);
                 await context.Response.Body.WriteAsync(bytes,0,bytes.Length);
             }

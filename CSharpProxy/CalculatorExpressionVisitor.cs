@@ -53,7 +53,7 @@ namespace CSharpProxy
                     tasks[0],
                     operation,
                     tasks[1]);
-                Console.WriteLine("{0} {1} {2}",tasks[0],operation,tasks[1]);
+                Console.WriteLine(binaryNode.ToString());
                 return result;
             }
             
