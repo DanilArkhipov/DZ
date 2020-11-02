@@ -30,7 +30,7 @@ let createJsonString a op b =
     let dataStr = JsonSerializer.Serialize<InputData>(requestData)
     dataStr
    
-let calcuateAsync (str:string)=
+let sendRequestToRemoteCalc (str:string)=
         async{
         use httpClient = new HttpClient()
         httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"))
@@ -40,13 +40,16 @@ let calcuateAsync (str:string)=
         | true -> Some(resp.Content.ReadAsStringAsync().Result)
         | false-> None
         }
+let calculateAsync a op b =
+    let jsonStr = createJsonString a op b
+    let response = sendRequestToRemoteCalc jsonStr
+    response
 
-
-let activate a op b =
+let activate =
+    fun (calculate:string -> string -> string -> Async<string option>) a op b ->
     Async.RunSynchronously(
     asyncMaybe{
-    let jsonStr = createJsonString a op b
-    let! response  = calcuateAsync jsonStr
+    let! response = calculate a op b
     return Some(response)
     })
 let showRes res=
@@ -59,6 +62,6 @@ let main argv =
 let a = Console.ReadLine()
 let op = Console.ReadLine()
 let b = Console.ReadLine()
-let res = activate a op b
+let res = activate calculateAsync a op b
 showRes res
 0 // return an integer exit code
