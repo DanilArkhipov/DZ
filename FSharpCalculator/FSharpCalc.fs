@@ -23,7 +23,7 @@ module Calculator =
         | "/" -> Some(Div)
         | _ -> None
     let getNum (input:string) =
-        let f,res = Double.TryParse(input)
+        let f,res = Double.TryParse(input.Replace('.',','))
         match f with
         | false -> None
         | true -> Some(res)
