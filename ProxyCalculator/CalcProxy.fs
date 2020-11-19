@@ -32,7 +32,7 @@ let createJsonString a op b =
 
 let calcuateAsync (str)=
         async{
-        let httpClient = new HttpClient()
+        use httpClient = new HttpClient()
         httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"))
         let content = new StringContent(str)
         let! resp = 
