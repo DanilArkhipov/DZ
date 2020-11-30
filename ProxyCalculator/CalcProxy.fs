@@ -18,27 +18,34 @@ type AsyncMaybeBuilder() =
             let! x' = x
 
             match x' with
-            | Some v -> return! f v
-            | None -> return None
+            | Some v -> return! (f v)
+            | None -> return "Ошибка"
         }
 
-    member this.Return x = async { return x }
+    member this.Return x = x
 
 let asyncMaybe = AsyncMaybeBuilder()
 let createJsonString a op b =
     let requestData = new InputData(a,op,b)
     let dataStr = JsonSerializer.Serialize<InputData>(requestData)
     dataStr
+
    
 let sendRequestToRemoteCalc (str:string)=
         async{
         use httpClient = new HttpClient()
         httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"))
         let content = new StringContent(str)
-        use! resp = httpClient.PostAsync("https://localhost:5001",content) |> Async.AwaitTask
-        return match resp.IsSuccessStatusCode with
-        | true -> Some(resp.Content.ReadAsStringAsync().Result)
-        | false-> None
+        let! resp = 
+            try 
+                async{
+                    use! res = (httpClient.PostAsync("https://localhost:5001",content) |> Async.AwaitTask)
+                    return! async{return Some(res.Content.ReadAsStringAsync()|>Async.AwaitTask)}
+                }
+
+            with
+                | AggregateException -> async{ return None}
+        return resp
         }
 let calculateAsync a op b =
     let jsonStr = createJsonString a op b
@@ -54,14 +61,20 @@ let activate =
     })
 let showRes res=
      match res with
-     | Some v -> Console.WriteLine(res)
-     | None -> Console.WriteLine("Ошибка")
+     | Some v -> v
+     | None -> "Ошибка"
 module ProxyRunner = 
 [<EntryPoint>]
 let main argv =
+try
+Async.RunSynchronously(
+async{
 let a = Console.ReadLine()
 let op = Console.ReadLine()
 let b = Console.ReadLine()
-let res = activate calculateAsync a op b
-showRes res
+let! res = activate a op b
+Console.WriteLine(res)})
+with
+|AggregateException -> Console.WriteLine("Сервер не отвечает!!!")
+
 0 // return an integer exit code

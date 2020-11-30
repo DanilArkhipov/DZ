@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -44,17 +45,15 @@ namespace CSharpProxy
                     }
                 }
                 var binaryNode = node as BinaryExpression;
-                var left = Task.Run(() => VisitAsync(binaryNode.Left));
-                var right = Task.Run(() => VisitAsync(binaryNode.Right));
-                var tasks = await Task.WhenAll(new []{left,right});
-                await Task.Yield();
-                var result = await PostRequestSender.SendPostRequestAsync(
-                    "https://localhost:5001/",
-                    tasks[0],
-                    operation,
-                    tasks[1]);
-                Console.WriteLine(binaryNode.ToString());
-                return result;
+                var before = new Lazy<Task<double>>[]
+                {
+                    new Lazy<Task<double>>(VisitAsync(binaryNode.Left)),
+                    new Lazy<Task<double>>(VisitAsync(binaryNode.Right))
+                };
+                var numbers = await Task.WhenAll(before.Select(x => x.Value));
+                var postRequest = await PostRequestSender.SendPostRequestAsync("https://localhost:5001/",numbers[0], operation, numbers[1]);
+                Console.WriteLine(node);
+                return postRequest;
             }
             
         }
