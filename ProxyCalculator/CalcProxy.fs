@@ -30,7 +30,8 @@ let createJsonString a op b =
     let dataStr = JsonSerializer.Serialize<InputData>(requestData)
     dataStr
 
-let calcuateAsync (str)=
+   
+let sendRequestToRemoteCalc (str:string)=
         async{
         use httpClient = new HttpClient()
         httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"))
@@ -46,15 +47,19 @@ let calcuateAsync (str)=
                 | AggregateException -> async{ return None}
         return resp
         }
-
-
-let activate a op b =
-    asyncMaybe{
+let calculateAsync a op b =
     let jsonStr = createJsonString a op b
-    let! response  = calcuateAsync jsonStr
-    return response
-    }
-let convertOptionToString res=
+    let response = sendRequestToRemoteCalc jsonStr
+    response
+
+let activate =
+    fun (calculate:string -> string -> string -> Async<string option>) a op b ->
+    Async.RunSynchronously(
+    asyncMaybe{
+    let! response = calculate a op b
+    return Some(response)
+    })
+let showRes res=
      match res with
      | Some v -> v
      | None -> "Ошибка"
@@ -71,4 +76,5 @@ let! res = activate a op b
 Console.WriteLine(res)})
 with
 |AggregateException -> Console.WriteLine("Сервер не отвечает!!!")
+
 0 // return an integer exit code

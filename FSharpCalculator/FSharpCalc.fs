@@ -27,7 +27,7 @@ module Calculator =
         match f with
         | false -> None
         | true -> Some(res)
-    let showValue x = 
+    let returnStringValue x = 
         match x with
         |None->"Something was wrong!"
         |Some v ->v.ToString()
@@ -63,6 +63,6 @@ module Runner =
         let b = Console.ReadLine()
         let c = Console.ReadLine()
         let res = Calculator.activate a b c
-        Console.WriteLine(Calculator.showValue res)
+        Console.WriteLine(Calculator.returnStringValue res)
         0 // return an integer exit code
 
