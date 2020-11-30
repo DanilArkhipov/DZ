@@ -2,12 +2,19 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CSharpProxy
 {
     public class CalculatorExpressionVisitor:ExpressionVisitor
     {
-        static async public Task<double> VisitAsync(Expression node)
+        private ICalculate _calculator;
+        public CalculatorExpressionVisitor(ICalculate calculator)
+        {
+            _calculator = calculator;
+        }
+        
+        public async  Task<double> VisitAsync(Expression node)
         {
             if (node.NodeType == ExpressionType.Constant)
             {
@@ -51,9 +58,9 @@ namespace CSharpProxy
                     new Lazy<Task<double>>(VisitAsync(binaryNode.Right))
                 };
                 var numbers = await Task.WhenAll(before.Select(x => x.Value));
-                var postRequest = await PostRequestSender.SendPostRequestAsync("https://localhost:5001/",numbers[0], operation, numbers[1]);
+                var result = await _calculator.CalculateAsync(numbers[0], operation, numbers[1]);
                 Console.WriteLine(node);
-                return postRequest;
+                return result;
             }
             
         }

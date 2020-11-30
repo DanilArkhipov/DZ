@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CSharpProxy
 {
@@ -7,8 +8,8 @@ namespace CSharpProxy
     {
         async static Task Main(string[] args)
         {
-            var calc = new Calculator();
-            Console.WriteLine(await calc.Calculate(Console.ReadLine()));
+            var calc = new CalculatorRunner(new ServiceCollection().AddSingleton<ICalculate,Calculator>());
+            Console.WriteLine(await calc.Activate(Console.ReadLine()));
         }
     }
 }
