@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpProxy", "CSharpProxy\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpProxyTests", "CSharpProxyTests\CSharpProxyTests.csproj", "{3E958B0F-294F-4A90-9130-25744392590B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmarks", "Benchmarks\Benchmarks.csproj", "{1A3FF2A9-2A83-4030-AE24-480BE78156A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{3E958B0F-294F-4A90-9130-25744392590B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E958B0F-294F-4A90-9130-25744392590B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E958B0F-294F-4A90-9130-25744392590B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A3FF2A9-2A83-4030-AE24-480BE78156A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A3FF2A9-2A83-4030-AE24-480BE78156A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A3FF2A9-2A83-4030-AE24-480BE78156A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A3FF2A9-2A83-4030-AE24-480BE78156A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
