@@ -1,12 +1,13 @@
 ﻿using System;
+using Calculator;
 
 namespace CalcRunner
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            var calc = new Calculator.CalcLogic();
+            var calc = new CalcLogic();
             calc.Activate(Console.ReadLine());
         }
     }

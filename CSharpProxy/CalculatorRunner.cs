@@ -1,6 +1,4 @@
-using System;
 using System.Linq.Expressions;
-using System.Security.Authentication.ExtendedProtection;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,14 +12,14 @@ namespace CSharpProxy
         {
             _services = services;
         }
-        
-        async public Task<double> Activate(string input)
+
+        public async Task<double> Activate(string input)
         {
-            var expression = (BinaryExpression)Converter.Convert(input);
-            var expressionVisitor = new CalculatorExpressionVisitor(_services.BuildServiceProvider().GetService<ICalculate>());
+            var expression = (BinaryExpression) Converter.Convert(input);
+            var expressionVisitor =
+                new CalculatorExpressionVisitor(_services.BuildServiceProvider().GetService<ICalculate>());
             var result = await expressionVisitor.VisitAsync(expression);
             return result;
-        }    
-        
+        }
     }
 }

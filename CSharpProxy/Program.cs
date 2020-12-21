@@ -4,11 +4,11 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CSharpProxy
 {
-    class Program
+    internal class Program
     {
-        async static Task Main(string[] args)
+        private static async Task Main(string[] args)
         {
-            var calc = new CalculatorRunner(new ServiceCollection().AddSingleton<ICalculate,Calculator>());
+            var calc = new CalculatorRunner(new ServiceCollection().AddSingleton<ICalculate, Calculator>());
             Console.WriteLine(await calc.Activate(Console.ReadLine()));
         }
     }

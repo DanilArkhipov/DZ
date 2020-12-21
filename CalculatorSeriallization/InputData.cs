@@ -1,16 +1,9 @@
-﻿using System;
-
-namespace CalculatorSeriallization
+﻿namespace CalculatorSeriallization
 {
     public class InputData
     {
-        public string FirstNumber { get; set; }
-        public string Operation { get; set; }
-        public string SecondNumber { get; set; }
-
         public InputData()
         {
-            
         }
 
         public InputData(string fN, string op, string sN)
@@ -19,6 +12,9 @@ namespace CalculatorSeriallization
             Operation = op;
             SecondNumber = sN;
         }
-        
+
+        public string FirstNumber { get; set; }
+        public string Operation { get; set; }
+        public string SecondNumber { get; set; }
     }
 }
