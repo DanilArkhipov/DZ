@@ -13,56 +13,52 @@ namespace CSharpProxy
         {
             _calculator = calculator;
         }
-        
-        public async  Task<double> VisitAsync(Expression node)
+
+        public async Task<double> VisitAsync(ConstantExpression node)
         {
-            if (node.NodeType == ExpressionType.Constant)
+            return (double)node.Value;
+        }
+
+        public async Task<double> VisitAsync(BinaryExpression node)
+        {
+            char operation;
+            switch (node.NodeType)
             {
-                var tmp = node as ConstantExpression;
-                return (double) tmp.Value;
-            }
-            else
-            {
-                char operation;
-                switch (node.NodeType)
+                case ExpressionType.Add:
                 {
-                    case ExpressionType.Add:
-                    {
-                        operation = '+';
-                        break;
-                    }
-                    case ExpressionType.Subtract:
-                    {
-                        operation = '-';
-                        break;
-                    }
-                    case ExpressionType.Multiply:
-                    {
-                        operation = '*';
-                        break;
-                    }
-                    case ExpressionType.Divide:
-                    {
-                        operation = '/';
-                        break;
-                    }
-                    default:
-                    {
-                        throw new Exception();
-                    }
+                    operation = '+';
+                    break;
                 }
-                var binaryNode = node as BinaryExpression;
-                var before = new Lazy<Task<double>>[]
+                case ExpressionType.Subtract:
                 {
-                    new Lazy<Task<double>>(VisitAsync(binaryNode.Left)),
-                    new Lazy<Task<double>>(VisitAsync(binaryNode.Right))
-                };
-                var numbers = await Task.WhenAll(before.Select(x => x.Value));
-                var result = await _calculator.CalculateAsync(numbers[0], operation, numbers[1]);
-                Console.WriteLine(node);
-                return result;
+                    operation = '-';
+                    break;
+                }
+                case ExpressionType.Multiply:
+                {
+                    operation = '*';
+                    break;
+                }
+                case ExpressionType.Divide:
+                {
+                    operation = '/';
+                    break;
+                }
+                default:
+                {
+                    throw new Exception();
+                }
             }
             
+            var before = new Lazy<Task<double>>[]
+            {
+                new Lazy<Task<double>>(VisitAsync((dynamic)node.Left)),
+                new Lazy<Task<double>>(VisitAsync((dynamic)node.Right))
+            };
+            var numbers = await Task.WhenAll(before.Select(x => x.Value));
+            var result = await _calculator.CalculateAsync(numbers[0], operation, numbers[1]);
+            Console.WriteLine(node);
+            return result;
         }
     }
 }
