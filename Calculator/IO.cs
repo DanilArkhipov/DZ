@@ -29,14 +29,14 @@ namespace Calculator
                     res[1] = CalcLogic.operators.mult;
                 else if (tmp[1] == "/")
                     res[1] = CalcLogic.operators.div;
-                else throw new Exception(ReturnInvalidInputErrorString());
+                else throw new ArgumentException(ReturnInvalidInputErrorString());
                 res[0] = double.Parse(tmp[0]);
                 res[2] = double.Parse(tmp[2]);
                 return res;
             }
             catch
             {
-                throw new Exception(ReturnInvalidInputErrorString());
+                throw new ArgumentException(ReturnInvalidInputErrorString());
             }
         }
 

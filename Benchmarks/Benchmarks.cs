@@ -9,12 +9,13 @@ namespace Benchmarks
         [Benchmark(Description = "SimpleMethod")]
         public void SimpleMethod()
         {
-            string s = "";
+            var s = "";
             for (int i = 0; i < 10; i++)
             {
                 s += "a";
             }
         }
+        
         [Benchmark(Description = "DynamicMethod")]
         public void DynamicMethod()
         {
@@ -24,27 +25,31 @@ namespace Benchmarks
                 s += "a";
             }
         }
+        
         [Benchmark(Description = "StaticMethod")]
         public void func1()
         {
             Methods.StaticMethod();
         }
+        
         [Benchmark(Description = "StaticDynamicMethod")]
         public void func2()
         {
             Methods.StaticDynamicMethod();
         }
+        
         [Benchmark(Description = "VirtualMethod")]
         public virtual void VirtualMethod()
         {
-            string s = "";
+            var s = "";
             for (int i = 0; i < 10; i++)
             {
                 s += "a";
             }
         }
+        
         [Benchmark(Description = "DynamicVirtualMethod")]
-        public virtual void DynamicVirtuaMethod()
+        public virtual void DynamicVirtualMethod()
         {
             dynamic s = "";
             for (int i = 0; i < 10; i++)
@@ -52,12 +57,14 @@ namespace Benchmarks
                 s += "a";
             }
         }
+        
         [Benchmark(Description = "GenericMethod")]
         public void func3()
         {
             var methods = new Methods();
             methods.GenericMethod("a");
         }
+        
         [Benchmark(Description = "DynamicGenericMethod")]
         public void func4()
         {

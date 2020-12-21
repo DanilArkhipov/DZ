@@ -46,7 +46,7 @@ namespace CSharpProxy
                 }
                 default:
                 {
-                    throw new Exception();
+                    throw new ArgumentException();
                 }
             }
 

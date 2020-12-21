@@ -4,12 +4,13 @@
     {
         public static void StaticMethod()
         {
-            string s = "";
+            var s = "";
             for (int i = 0; i < 10; i++)
             {
                 s += "a";
             }
         }
+        
         public static void StaticDynamicMethod()
         {
             dynamic s = "";
@@ -21,12 +22,13 @@
         
         public void GenericMethod<T>(T x)
         {
-            string s = "";
+            var s = "";
             for (int i = 0; i < 10; i++)
             {
                 s += x;
             }
         }
+        
         public void DynamicGenericMethod<T>(T x)
         {
             dynamic s = "";
